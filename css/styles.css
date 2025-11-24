@@ -10934,9 +10934,9 @@ hr.divider-light {
 
 header.masthead {
   position: relative;             /* Necesario para que ::before funcione */
-  padding-top: 10rem;
-  padding-bottom: calc(10rem - 4.5rem);
-  background: url("../assets/eco_sostenibilidad.webp");
+  padding-top: 14rem;
+  padding-bottom: calc(14rem - 4.5rem);
+  background: url("../assets/PORTAL DE ACCESO 1.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -10949,7 +10949,7 @@ header.masthead::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);   /* ⭐ Cambia este valor para más o menos oscuridad */
+  background: rgba(0, 0, 0, 0.10);   /* ⭐ Cambia este valor para más o menos oscuridad */
   z-index: 1;
 }
 
@@ -11084,14 +11084,31 @@ header.masthead h1, header.masthead .h1 {
 
 /* La fila completamente pegada */
 .portfolio-row {
+    display: flex;
+    flex-wrap: wrap;        /* ✅ Ahora sí puede hacer 2 filas */
+    justify-content: center;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
     margin: 0 !important;
     padding: 0 !important;
 }
 
 /* Cada item también pegado */
+/* 2 por fila en pantallas medianas/grandes */
 .portfolio-item {
+    flex: 0 0 50%;   /* ocupa el 50% del ancho */
+    max-width: 50%;
     padding: 0 !important;
     margin: 0 !important;
+}
+
+/* (opcional) En celular, que sea 1 por fila para que no se vea apretado */
+@media (max-width: 767.98px) {
+    .portfolio-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }
 
 /* Asegurar que las imágenes NO tengan espacio */
@@ -11394,27 +11411,28 @@ header.masthead h1, header.masthead .h1 {
 
 
 /* === Sección Equipo del Proyecto === */
-
+/* === Tarjeta del equipo con colores del logo === */
 .equipo-card {
-    background: #f8f9fa;
+    background: rgba(10, 92, 92, 0.08); /* #0A5C5C muy suave */
     padding: 1.5rem 1rem;
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px rgba(30, 127, 122, 0.18);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     margin-bottom: 2rem;
-    border-top: 4px solid #61855F; /* verde musgo */
+    border-top: 4px solid #0A5C5C;
 }
 
 .equipo-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+    box-shadow: 0 12px 28px rgba(30,127,122,0.32);
 }
 
+/* Círculo para la foto */
 .equipo-foto {
     width: 95px;
     height: 95px;
     border-radius: 50%;
-    background: #61855F;
+    background: #1E7F7A;
     color: white;
     display: flex;
     align-items: center;
@@ -11423,20 +11441,30 @@ header.masthead h1, header.masthead .h1 {
     font-size: 1.9rem;
     font-weight: 700;
     letter-spacing: 1px;
-    box-shadow: 0 0 0 4px #e9ecef;
+    box-shadow: 0 0 0 4px rgba(167, 220, 211, 0.7);
 }
 
-/* Iniciales si no hay foto */
+/* La imagen dentro del círculo */
+.equipo-foto img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;   /* para asegurarlo circular */
+    object-fit: cover;    /* recorta sin deformar */
+    display: block;
+}
+
+/* Iniciales si algún día dejas una sin foto */
 .initials {
     font-family: "Merriweather Sans", sans-serif;
 }
+
 /* Fondo suave */
 /* Fondo general */
 #foda-interactivo {
     padding: 40px 0;
     background: 
         linear-gradient(135deg, rgba(255,255,255,0.2)),
-        url('../assets/eco_sostenibilidad.webp');
+        url('../assets/IMG-20251123-WA0000.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -11729,7 +11757,7 @@ foda-item h3 {
     padding-top: 100px;
     padding-bottom: 100px;
 
-    background-image: url("../assets/3-CAMPUS.jpg");
+    background-image: url("../assets/Imagen de WhatsApp 2025-11-23 a las 23.53.24_be1dc47c.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -11741,7 +11769,7 @@ foda-item h3 {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.55); /* <--- AJUSTA AQUÍ LA OPACIDAD */
+    background: rgba(0, 0, 0, 0.20); /* <--- AJUSTA AQUÍ LA OPACIDAD */
     z-index: 1;
 }
 

@@ -2,7 +2,7 @@
 header.urbana-header {
     height: 40vh;
     background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0,0,0,0.45)),
-                url('../assets/img/portfolio/fullsize/1.jpg');
+                url('../assets/C3.png');
     background-size: cover;
     background-position: center;
     display: flex;
