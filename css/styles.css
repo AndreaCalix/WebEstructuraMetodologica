@@ -1,12 +1,69 @@
 @charset "UTF-8";
 
 :root {
-    --color-primario: #6ABF4B;
-    --color-secundario: #2E5939;
-    --color-tierra: #E9E4D8;
-    --color-oscuro: #33413C;
-    --color-blanco: #F7F7F7;
+    --curla-verde: #0C6A6A;      /* Verde institucional */
+    --curla-verde-claro: #59A8A8; 
+    --curla-gris-oscuro: #333333;
+    --curla-gris: #BFBFBF;
 }
+
+/* LOGO MÁS PEQUEÑO */
+.logo-principal-small {
+    height: 70px;       /* tamaño perfecto */
+    max-width: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.25));
+}
+
+/* TITULO MÁS ELEGANTE */
+.titulo-hero {
+    font-size: 2rem;      /* antes muy grande */
+    letter-spacing: 1px;
+}
+
+/* TEXTO MÁS COMPACTO */
+.texto-hero {
+    max-width: 600px;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+/* Navbar siempre blanco */
+#mainNav {
+    background-color: #ffffff !important;
+    transition: none !important;
+}
+
+/* Título y enlaces en color institucional */
+#mainNav .navbar-brand,
+#mainNav .nav-link {
+    color: #0c5b53 !important; /* Verde Campus Semilla */
+    font-weight: 600;
+}
+
+/* Hover más elegante */
+#mainNav .nav-link:hover {
+    color: #083f3a !important;
+}
+
+/* Elimina cualquier estilo del script del template */
+.navbar-scrolled {
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08) !important;
+}
+
+/* HERO MÁS PEQUEÑO */
+.hero-branding {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    background: linear-gradient(
+                rgba(0, 80, 80, .75),
+                rgba(0, 80, 80, .75)
+               ),
+               url('assets/3-CAMPUS.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
 
 *,
 *::before,
@@ -10876,14 +10933,47 @@ hr.divider-light {
 }
 
 header.masthead {
+  position: relative;             /* Necesario para que ::before funcione */
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/bg-masthead.jpg");
+  background: url("../assets/eco_sostenibilidad.webp");
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: scroll;
   background-size: cover;
+  background-attachment: scroll;
+  overflow: hidden;
 }
+
+/* Capa oscura para legibilidad */
+header.masthead::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);   /* ⭐ Cambia este valor para más o menos oscuridad */
+  z-index: 1;
+}
+
+/* Asegurar que el contenido esté arriba */
+header.masthead > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Texto más visible */
+header.masthead h1,
+header.masthead p,
+header.masthead h2 {
+  color: #ffffff !important;        /* blanco puro */
+  text-shadow: 0 2px 5px rgba(0,0,0,0.55); /* ⭐ sombra para mayor legibilidad */
+}
+
+
+/* Contenido por encima */
+header.masthead > * {
+  position: relative;
+  z-index: 2;
+}
+
 header.masthead h1, header.masthead .h1 {
   font-size: 2.25rem;
 }
@@ -10914,6 +11004,20 @@ header.masthead h1, header.masthead .h1 {
   position: relative;
   display: block;
 }
+#portfolio {
+    background: linear-gradient(
+        135deg,
+        #0A5C5C 0%,
+        #197C77 40%,
+        #4DB6AC 75%,
+        #D7F3F0 100%
+    );
+    padding-top: 60px;
+    padding-bottom: 60px;
+    position: relative;
+}
+
+
 #portfolio .container-fluid .portfolio-box .portfolio-box-caption, #portfolio .container-sm .portfolio-box .portfolio-box-caption, #portfolio .container-md .portfolio-box .portfolio-box-caption, #portfolio .container-lg .portfolio-box .portfolio-box-caption, #portfolio .container-xl .portfolio-box .portfolio-box-caption, #portfolio .container-xxl .portfolio-box .portfolio-box-caption {
   display: flex;
   align-items: center;
@@ -10943,119 +11047,265 @@ header.masthead h1, header.masthead .h1 {
   opacity: 1;
 }
 
+/* ❗ Fuerza a que todo quede en una sola fila */
+.portfolio-row {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0;             /* sin espacios */
+    flex-wrap: nowrap;  /* ❗ evita que salten de línea */
+    width: 100%;
+}
+
+/* Cada cuadro ocupa el mismo espacio */
+.portfolio-item {
+    flex: 1 1 auto;           /* todos con el mismo ancho */
+    min-width: 0;             /* evita que rompa el layout */
+}
+
+/* Que la imagen llene su contenedor */
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Quitar todo el espacio alrededor del portafolio */
+#portfolio {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Quitar espacio interno del container */
+#portfolio .container-fluid {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* La fila completamente pegada */
+.portfolio-row {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Cada item también pegado */
+.portfolio-item {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Asegurar que las imágenes NO tengan espacio */
+.portfolio-item img {
+    display: block;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Quitar espacio del video también */
+.video-full {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* El video ocupa todo el ancho sin dejar espacios */
+.video-full video {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Mantener tus estilos existentes */
+
 /* === Creative Interactive Timeline === */
 /* ========= Línea de tiempo curva ========= */
+/* ===========================
+   SECCIÓN COMPLETA CON DEGRADADO
+   =========================== */
+
+.timeline-logo-bg {
+    position: relative;
+    overflow: hidden;
+
+    /* Degradado basado en tu logo */
+    background: linear-gradient(
+        135deg,
+        #0A5C5C 0%,
+        #197C77 40%,
+        #4DB6AC 75%,
+        #D7F3F0 100%
+    );
+
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+/* Suavizado del fondo */
+.timeline-logo-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: rgba(255,255,255,0.05);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.timeline-logo-bg > * {
+    position: relative;
+    z-index: 5;
+}
+
+/* ===========================
+   CONTENEDOR DE LA CURVA
+   =========================== */
+/* ===================== */
+/*   SECCIÓN DEGRADADA   */
+/* ===================== */
+
+.timeline-logo-bg {
+    position: relative;
+    overflow: hidden;
+    padding: 80px 0;
+
+    /* MISMO degradado del portfolio */
+    background: linear-gradient(
+        135deg,
+        #0A5C5C 0%,
+        #197C77 40%,
+        #4DB6AC 75%,
+        #D7F3F0 100%
+    );
+}
+
+/* Capa suave encima del degradado */
+.timeline-logo-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.06);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.timeline-logo-bg > * {
+    position: relative;
+    z-index: 5;
+}
+
+
+
+/* ===================== */
+/*     LÍNEA DE TIEMPO   */
+/* ===================== */
 
 .timeline-curve-wrapper {
     position: relative;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 3rem auto 0 auto;
-    height: 320px;
+    height: 330px;
 }
 
-/* SVG ocupa todo el contenedor */
+/* CURVA SVG blanca con profundidad */
 .timeline-curve-svg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.25));
 }
 
-/* Nodo genérico */
+/* ===================== */
+/*      NODOS / DOTS     */
+/* ===================== */
+
 .curve-node {
     position: absolute;
     transform: translate(-50%, -50%);
 }
 
-/* Punto sobre la curva */
 .curve-dot {
-    width: 18px;
-    height: 18px;
-    background-color: #61855F; /* verde musgo */
+    width: 20px;
+    height: 20px;
+    background-color: white;
     border-radius: 50%;
-    border: 3px solid #f8f9fa;
-    box-shadow: 0 0 0 3px rgba(97,133,95,0.3);
+    border: 3px solid #ffffff;
+    box-shadow: 
+        0 0 12px rgba(255,255,255,0.9),
+        0 0 4px rgba(0,0,0,0.4);
 }
 
-/* Tarjetita */
-.curve-card {
+
+
+/* =========================== */
+/*   TARJETAS MINI (IMAGEN)   */
+/* =========================== */
+
+.mini-card {
     margin-top: 0.75rem;
-    min-width: 180px;
-    max-width: 230px;
-    background: #f8f9fa;
-    border-radius: 10px;
-    padding: 0.8rem 1rem;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-    border-left: 4px solid #61855F;
+    min-width: 160px;
+    max-width: 180px;
+    background: #ffffffd9;
+    border-radius: 12px;
+    padding: 0.5rem 0.8rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.22);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+    text-align: center;
 }
 
-.curve-card h4 {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #527D60;
-    margin-bottom: 0.1rem;
+.mini-card:hover {
+    transform: translateY(-6px) scale(1.04);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.28);
 }
 
-.curve-card h5 {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #2E5939;
-    margin-bottom: 0.25rem;
+/* Imagen dentro de cada tarjeta */
+.mini-card .mini-img {
+    width: 100%;
+    height: 85px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 0.4rem;
 }
 
-.curve-card p {
-    font-size: 0.9rem;
+.mini-card h4 {
+    font-size: 0.95rem;
     margin: 0;
-    color: #33413C;
+    font-weight: 700;
+    color: #0A5C5C;
 }
 
-.curve-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
-}
 
-/* ============ Posiciones de los nodos (porcentaje sobre el wrapper) ============ */
 
-.node-1 {
-    left: 8%;
-    top: 70%;
-}
+/* ===================== */
+/*   POSICIONES NODOS    */
+/* ===================== */
 
-.node-2 {
-    left: 30%;
-    top: 25%;
-}
+.node-1 { left: 8%; top: 70%; }
+.node-2 { left: 30%; top: 25%; }
+.node-3 { left: 52%; top: 65%; }
+.node-4 { left: 74%; top: 35%; }
+.node-5 { left: 92%; top: 55%; }
 
-.node-3 {
-    left: 52%;
-    top: 65%;
-}
 
-.node-4 {
-    left: 74%;
-    top: 35%;
-}
 
-.node-5 {
-    left: 92%;
-    top: 55%;
-}
+/* ===================== */
+/*   RESPONSIVE MOBILE   */
+/* ===================== */
 
-/* Responsive: en móvil la volvemos vertical sencilla */
 @media (max-width: 768px) {
 
     .timeline-curve-wrapper {
         height: auto;
-        padding-left: 25px;
         margin-top: 2rem;
+        padding-left: 25px;
     }
 
     .timeline-curve-svg {
-        display: none; /* ocultamos la curva en móvil */
+        display: none;
     }
 
     .curve-node {
@@ -11063,19 +11313,84 @@ header.masthead h1, header.masthead .h1 {
         left: 0;
         top: 0;
         transform: none;
-        margin-bottom: 1.8rem;
+        margin-bottom: 2rem;
     }
 
-    .curve-dot {
-        position: absolute;
-        left: -25px;
-        top: 8px;
-    }
+   
 
-    .curve-card {
-        margin-left: 10px;
-    }
+    /* --- Tamaño MÁS GRANDE para tarjetas (mini-cards) --- */
+.mini-card {
+    min-width: 280px;      /* antes 180px */
+    max-width: 300px;      /* antes 230px */
+    padding: 1rem 1.2rem;  
+    border-radius: 15px;
+    background: #ffffff;
+    border-left: 6px solid #0A5C5C;  /* color del logo */
+    box-shadow: 0 10px 35px rgba(0,0,0,0.25);  /* efecto 3D más visible */
+    transition: transform .25s ease, box-shadow .25s ease;
 }
+/* 📌 TARJETA XL */
+.mini-card {
+    min-width: 360px;      /* antes 260px */
+    max-width: 380px;
+    padding: 1.5rem 1.2rem;
+    border-radius: 18px;
+    background: #ffffff;
+    border-left: 8px solid #0A5C5C;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.30);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* 📌 IMAGEN XL */
+.mini-card .mini-img {
+    width: 100%;
+    height: 260px;  /* ESTE tamaño se ve perfecto */
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 12px;
+}
+
+/* 📌 TEXTO XL */
+.mini-card h4 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-align: center;
+    color: #064F4F;
+}
+
+/* 📌 EFECTO HOVER */
+.mini-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+}
+
+/* 📌 PUNTOS DE LA CURVA más grandes */
+.curve-dot {
+    width: 28px;
+    height: 28px;
+    border: 4px solid #ffffff;
+    box-shadow: 0 0 0 5px rgba(255,255,255,0.4);
+}
+
+/* 📌 AGRANDAR EL ÁREA DEL TIMELINE */
+.timeline-curve-wrapper {
+    height: 500px !important;   /* antes 320px */
+}
+
+/* 📌 AJUSTAR POSICIONES PARA CARDS XL */
+.node-1 { left: 10%; top: 75%; }
+.node-2 { left: 33%; top: 30%; }
+.node-3 { left: 55%; top: 75%; }
+.node-4 { left: 77%; top: 33%; }
+.node-5 { left: 93%; top: 70%; }
+
+
+/* Si deseas separar un poco más las posiciones (opcional) */
+/* Solo aumentar ligeramente top o left */
+
+}
+
+
 
 
 /* === Sección Equipo del Proyecto === */
@@ -11115,73 +11430,176 @@ header.masthead h1, header.masthead .h1 {
 .initials {
     font-family: "Merriweather Sans", sans-serif;
 }
-/* === FODA en forma de cruz === */
-.foda-image-wrapper {
+/* Fondo suave */
+/* Fondo general */
+#foda-interactivo {
+    padding: 40px 0;
+    background: 
+        linear-gradient(135deg, rgba(255,255,255,0.2)),
+        url('../assets/eco_sostenibilidad.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Contenedor más pequeño y cuadrado */
+.foda-container {
     position: relative;
     width: 100%;
-    max-width: 600px;   /* ⬅ más pequeño */
+    max-width: 900px;
+    height: 900px;
     margin: auto;
 }
 
 
-.foda-base-img {
-    width: 100%;
-    transition: transform .4s ease;
-    cursor: zoom-in;
-}
-
-.foda-base-img.zoomed {
-    transform: scale(1.6);
-    cursor: zoom-out;
-}
-
-/* SPOTS */
-.foda-spot {
+/* Estilo general pétalos */
+.foda-item {
     position: absolute;
+    width: 40%;           /* antes 50% */
+    height: 40%;          /* antes 50% */
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    transition: transform .3s ease;
-    font-weight: 700;
-    font-size: 1.2rem;
-}
 
-.foda-spot:hover {
-    transform: scale(1.1);
-}
+    background: rgba(255,255,255,0.35);
+    backdrop-filter: blur(8px);
 
-
-
-/* === Tarjetas de proyectos === */
-
-.proyecto-card {
-    position: relative;
-    cursor: pointer;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.proyecto-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 14px 30px rgba(0,0,0,0.18);
-}
-
-.proyecto-img {
-    width: 100%;
-    height: 210px;
-    object-fit: cover;
-}
-
-.proyecto-titulo {
-    background: #61855F; /* Verde institucional */
-    color: white;
+    color: #063b36;
+    padding: 15px;
     text-align: center;
-    padding: 0.8rem;
+    border-radius: 22px;
+}
+/* Títulos */
+foda-item h3 {
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+/* Listas */
+.foda-item li {
+    font-size: 0.78rem;
+    margin: 2px 0;
+}
+
+
+/* --- NUEVAS POSICIONES MÁS SEPARADAS --- */
+
+.fortalezas { 
+    top: 0; 
+    left: 30%;
+}
+.oportunidades { 
+    top: 30%; 
+    right: 0;
+}
+.debilidades { 
+    bottom: 0; 
+    left: 30%;
+}
+.amenazas { 
+    top: 30%; 
+    left: 0;
+}
+
+
+/* Logo central más pequeño */
+.foda-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 280px;
+    height: 280px;
+
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 25px rgba(0,0,0,0.25);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.foda-center img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+
+/* === Sección de Proyectos === */
+.proyectos-modern {
+    padding-top: 40px;       /* antes 80 */
+    padding-bottom: 40px;
+}
+
+/* Tarjetas más pequeñas */
+.proyecto-banner {
+    position: relative;
+    width: 100%;
+    height: 250px;           /* antes 350px → más compacto */
+    overflow: hidden;
+    border-radius: 14px;     /* borde más limpio */
+    box-shadow: 0 6px 25px rgba(0,0,0,0.20);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.proyecto-banner:hover {
+    transform: scale(1.015); /* efecto más suave */
+}
+
+/* Imagen */
+.banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(75%);
+    transition: 0.3s ease;
+}
+
+.proyecto-banner:hover .banner-img {
+    filter: brightness(60%);
+}
+
+/* Overlay más pequeño */
+.banner-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px 22px;     /* antes 40px */
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(6px);
+    color: #0A3A35;
+}
+
+/* Títulos más pequeños */
+.banner-title {
+    font-size: 1.3rem;       /* antes 1.8rem */
     font-weight: 700;
-    font-size: 1.05rem;
+    margin-bottom: 5px;
+}
+
+/* Quitar espacios laterales */
+.proyectos-modern .container,
+.proyectos-modern .container-fluid {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Quitar espacios entre columnas */
+.proyectos-modern .row {
+    --bs-gutter-x: 0 !important;
+    --bs-gutter-y: 0 !important;
+}
+
+.proyectos-modern .col-lg-6,
+.proyectos-modern .col-md-6,
+.proyectos-modern .col-12 {
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 /* Modales estilizados */
@@ -11302,4 +11720,149 @@ header.masthead h1, header.masthead .h1 {
     height: 300px;
     object-fit: cover;
     object-position: center;
+}
+
+/* Fondo elegante solo para sección Servicios */
+/* Fondo elegante para la sección Servicios */
+.servicios-bg {
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    background-image: url("../assets/3-CAMPUS.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    overflow: hidden; /* asegura que el overlay quede dentro */
+}
+
+/* Capa oscura encima de la imagen */
+.servicios-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55); /* <--- AJUSTA AQUÍ LA OPACIDAD */
+    z-index: 1;
+}
+
+/* Todo el contenido por encima del overlay */
+.servicios-bg > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Texto blanco */
+.servicios-bg h3,
+.servicios-bg p,
+.servicios-bg i {
+    color: #ffffff !important;
+}
+
+
+/* Capa oscura para que el texto siempre sea visible */
+.servicios-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.70.portfolio-line); /* oscurece sin dañar la foto */
+    z-index: 1;
+}
+
+/* Asegura que el contenido quede encima del overlay */
+.servicios-bg > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Texto blanco para que resalte */
+.servicios-bg h3,
+.servicios-bg p,
+.servicios-bg i {
+    color: white !important;
+}
+
+/* Íconos más elegantes */
+.servicios-bg i {
+    opacity: 0.0;
+}
+
+/* Texto más limpio */
+.servicios-bg p {
+    font-size: 1rem;
+    max-width: 250px;
+    margin: 0 auto;
+}
+
+/* Mini tarjetas */
+.mini-card {
+    background: rgba(255,255,255,0.9);
+    padding: 12px;
+    border-radius: 12px;
+    text-align: center;
+    width: 140px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* La imagen pequeña */
+.mini-card .mini-img {
+    width: 100%;
+    border-radius: 10px;       /* Circular si deseas */
+    margin-bottom: 8px;
+    object-fit: cover;
+    height: 90px;
+}
+
+/* Título */
+.mini-card h4 {
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Ajustes del nodo para que no baje demasiado */
+.curve-node {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Fondo degradado para Dimensiones Estratégicas – versión suave */
+.dimensiones-bg {
+    background: linear-gradient(
+        180deg,
+        rgba(27,94,32,0.25) 0%,
+        rgba(76,175,80,0.25) 35%,
+        rgba(165,214,167,0.25) 70%,
+        rgba(255,255,255,0.85) 100%
+    );
+    padding-top: 60px;
+    padding-bottom: 60px;
+    width: 100%;
+}
+
+
+/* Sección completa con espacio arriba/abajo */
+.video-full {
+    position: relative;
+    width: 100%;
+    height: 100vh;      /* Ocupa TODA la pantalla */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;   /* Evita bordes */
+    display: block;
+}
+
+/* Video fullscreen */
+.video-full video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* LLENA todo sin distorsión */
+    transform: translate(-50%, -50%);
 }

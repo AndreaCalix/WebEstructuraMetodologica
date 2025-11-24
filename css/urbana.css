@@ -171,47 +171,33 @@ header.urbana-header {
 .horizontal-scroll::-webkit-scrollbar {
     display: none;
 }
-
-/* Ítems */
+/* --- Tamaño más grande de cada tarjeta --- */
 .scroll-item {
-    flex: 0 0 300px;
-    text-align: center;
+    flex: 0 0 580px;      /* antes 300px → más grande */
+    margin-right: 30px;
 }
 
+/* --- Imagen más alta y más protagonista --- */
 .scroll-img {
     width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    height: 450px;        /* antes auto → ahora más grande */
+    object-fit: cover;    /* recorte elegante */
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
     transition: .3s;
 }
 
+/* Hover efecto más suave */
 .scroll-img:hover {
-    transform: scale(1.05);
+    transform: scale(1.06);
 }
 
-/* --- Título principal en negrita --- */
-.page-section h2 {
-    font-weight: 600 !important;
-}
-
-/* --- Títulos debajo de cada imagen --- */
+/* Títulos más grandes para acompañar la imagen */
 .item-title {
-    font-size: 1.05rem;   /* un poco más pequeño */
-    font-weight: 600;     /* semi-negrita, visible */
-    text-align: center;
-    margin-top: 10px;
-    color: #333;
-}
-
-/* Imagen del scroll */
-.scroll-img {
-    width: 100%;
-    border-radius: 12px;
-    margin-bottom: 5px;
-}
-
-/* Contenedor del ítem */
-.scroll-item {
-    min-width: 280px;
-    margin-right: 25px;
+    font-size: 1.15rem;   
+    font-weight: 700;     
+    margin-top: 12px;
+    color: #26473e;
+    text-transform: none;
+    letter-spacing: 0.3px;
 }
